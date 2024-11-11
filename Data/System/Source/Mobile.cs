@@ -729,6 +729,7 @@ namespace Server
 		private List<Mobile> m_Stabled;
 		private bool m_AutoPageNotify;
 		private bool m_Meditating;
+		private bool m_Searching;
 		private bool m_CanHearGhosts;
 		private bool m_CanSwim, m_CantWalk;
 		private int m_TithingPoints;
@@ -12095,6 +12096,19 @@ namespace Server
 			set
 			{
 				m_Meditating = value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public bool Searching
+		{
+			get
+			{
+				return m_Searching;
+			}
+			set
+			{
+				m_Searching = value;
 			}
 		}
 

@@ -11,11 +11,11 @@ namespace Server
 
 	// Enables commands to be entered into the server console. WARNING: May cause crashes so enable it at your own risk.
 
-		public static bool S_EnableConsole = false;
+		public static bool S_EnableConsole = true;
 
 	// Enables output messages to the console. Messages are from tasks that run and the steps of running the world building command.
 
-		public static bool ConsoleLog = false;
+		public static bool ConsoleLog = true;
 
 	// These settings will create a button on the Message of the Day. If you do not fill in a website name, the text next to the 
 	// button will simply say Website. When players select the button, it should open their browser to that site.
@@ -49,7 +49,7 @@ namespace Server
 
 	// The port you want your server to listen on.
 
-		public static int S_Port = 2593;
+		public static int S_Port = 2594;
 
 	// If you want to enter your IP for external connections, you can enter it here. Otherwise, the autodetect function
 	// below can likely do it for you automatically.
@@ -61,7 +61,7 @@ namespace Server
 
 	// Here you can enter the name of your server/world
 
-		public static string S_ServerName = "Secrets of Sosaria";
+		public static string S_ServerName = "Test Server";
 
 	// If true, your public IP address will be auto detected to help with external connections.
 

@@ -51,6 +51,13 @@ namespace Server.SkillHandlers
 				else 
 					p = src.Location;
 
+					if (targ == src) {
+						src.Searching = true;
+						src.SendMessage("You begin to actively search.");
+					BuffInfo.AddBuff( src, new BuffInfo( BuffIcon.Invisibility, 500003 ) );
+						return;
+					}
+
 				double srcSkill = src.Skills[SkillName.Searching].Value;
 				int range = (int)(srcSkill / 10.0);
 

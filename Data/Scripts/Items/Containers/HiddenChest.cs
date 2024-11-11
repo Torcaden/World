@@ -36,9 +36,9 @@ namespace Server.Items
 			}
 			if ( m.AccessLevel == AccessLevel.Player && m is PlayerMobile )
 				FoundBox( m, false, level, this );
-
 			return true;
 		}
+
 
 		public static bool FoundBox( Mobile m, bool spell, int level, Item item )
 		{
@@ -168,15 +168,26 @@ namespace Server.Items
 		{
 			if( m is PlayerMobile && MySettings.S_EnableDungeonSoundEffects )
 			{
-				if ( DateTime.Now >= m_NextSound && Utility.InRange( m.Location, this.Location, 10 ) )
-				{
-					if ( Utility.RandomBool() )
-					{
-						int sound = HiddenChest.DungeonSounds( this );	
-						m.PlaySound( sound );	
+				if (m.Searching) {
+					int level = (int)(m.Skills[SkillName.Searching].Value / 10);
+					if (level < 1){level = 1;}
+					if (level > 10){level = 10;}
+					int range = (int) m.Skills[SkillName.Searching].Value / 12;
+					if (Utility.InRange(m.Location, this.Location, range)) {
+						if (FoundBox(m, true, level, this)) {
+							Delete();
+						}
 					}
-					m_NextSound = (DateTime.Now + TimeSpan.FromSeconds( 60 ));	
 				}
+				// if ( DateTime.Now >= m_NextSound && Utility.InRange( m.Location, this.Location, 10 ) )
+				// {
+				// 	if ( Utility.RandomBool() )
+				// 	{
+				// 		int sound = HiddenChest.DungeonSounds( this );	
+				// 		m.PlaySound( sound );	
+				// 	}
+				// 	m_NextSound = (DateTime.Now + TimeSpan.FromSeconds( 60 ));	
+				// }
 			}
 		}
 
